@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.nytimes.populararticles.ArticleDetailsListActivity;
 import com.nytimes.populararticles.R;
 import com.nytimes.populararticles.ui.retrofit.responseModel.Result;
 
@@ -35,6 +34,7 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
     public void onBindViewHolder(final ArticleListAdapter.ViewHolder holder, int position) {
         holder.tvTitle.setText(resultList.get(position).getTitle());
         holder.tvPublishDate.setText(resultList.get(position).getPublishedDate());
+        holder.tvBylines.setText(resultList.get(position).getByline());
 
         holder.itemView.setTag(resultList.get(position));
         holder.itemView.setOnClickListener(mOnClickListener);
@@ -48,11 +48,13 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
     class ViewHolder extends RecyclerView.ViewHolder {
         final TextView tvTitle;
         final TextView tvPublishDate;
+        final TextView tvBylines;
 
         ViewHolder(View view) {
             super(view);
             tvTitle = (TextView) view.findViewById(R.id.tvTitle);
             tvPublishDate = (TextView) view.findViewById(R.id.tvPublishDate);
+            tvBylines = (TextView) view.findViewById(R.id.tvBylines);
         }
     }
 

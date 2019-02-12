@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_lens_gray_48dp" />
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_small_margin"
+        android:layout_toEndOf="@id/imageView2"
+        android:layout_toRightOf="@id/imageView2"
         android:ellipsize="end"
         android:maxLines="2"
         android:text="simple text"
@@ -16,10 +28,22 @@
         android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/tvBylines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTitle"
+        android:layout_margin="@dimen/text_small_margin"
+        android:layout_toEndOf="@id/imageView2"
+        android:layout_toRightOf="@id/imageView2"
+        android:text="@string/hello_blank_fragment"
+        android:textColor="@color/text_dark_grey"
+        android:textSize="16sp" />
+
+    <TextView
         android:id="@+id/tvPublishDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvTitle"
+        android:layout_below="@id/tvBylines"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/text_small_margin"
@@ -28,4 +52,15 @@
         android:textAppearance="?attr/textAppearanceListItem"
         android:textColor="@color/text_grey"
         android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_keyboard_arrow_right_gray_24dp" />
+
+
 </RelativeLayout>

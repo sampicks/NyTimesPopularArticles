@@ -3,7 +3,6 @@ package com.nytimes.populararticles.ui.fragments.presenter;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
-import android.widget.ProgressBar;
 
 import com.nytimes.populararticles.R;
 import com.nytimes.populararticles.ui.fragments.mvp.FragmentViewPresenter;

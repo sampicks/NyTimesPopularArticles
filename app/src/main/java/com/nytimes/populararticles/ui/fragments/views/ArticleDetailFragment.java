@@ -49,9 +49,16 @@ public class ArticleDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView tvTitle = view.findViewById(R.id.tvTitleDetails);
+        TextView tvTitleDetails = view.findViewById(R.id.tvTitleDetails);
+        TextView tvAbstractDetails = view.findViewById(R.id.tvAbstractDetails);
+        TextView tvSourceDetails = view.findViewById(R.id.tvSourceDetails);
+        TextView tvPublishDateDetails = view.findViewById(R.id.tvPublishDateDetails);
 
-        tvTitle.setText(result.getTitle());
+
+        tvTitleDetails.setText(result.getTitle());
+        tvAbstractDetails.setText(result.getAbstract());
+        tvSourceDetails.setText(getString(R.string.source) + result.getSource());
+        tvPublishDateDetails.setText(result.getPublishedDate());
     }
 
 
