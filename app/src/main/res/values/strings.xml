@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">NyTimesPopularArticles</string>
     <string name="title_articledetails_detail">ArticleDetails Detail</string>
+
+    <string name="api_key">h8AWSzKFhoW650Z0Ppk6SAgALodKQiKO</string>
+
+    <string name="popular_articles">Popular Articles</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loading">Loading...</string>
 </resources>
