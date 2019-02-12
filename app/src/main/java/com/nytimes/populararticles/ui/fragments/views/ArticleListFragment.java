@@ -22,7 +22,9 @@ import com.nytimes.populararticles.ui.fragments.mvp.FragmentViewPresenter;
 import com.nytimes.populararticles.ui.fragments.presenter.ArticleListPresenterImpl;
 
 /**
+ * @author peeyooshkhare
  * A simple {@link Fragment} subclass.
+ * @version 1.0
  */
 public class ArticleListFragment extends Fragment implements FragmentViewPresenter.View<ArticleListResponse>, ArticleListAdapter.RecyclerViewItemClickListener {
     public static final String TAG = "ArticleListFragment";
@@ -53,6 +55,10 @@ public class ArticleListFragment extends Fragment implements FragmentViewPresent
         presenter.fetchData();
     }
 
+    /**
+     * An interface method implementation
+     * @param articleListResponse A reference of type {@link ArticleListResponse}
+     */
     @Override
     public void setData(ArticleListResponse articleListResponse) {
         if (articleListResponse != null && articleListResponse.getResults() != null && articleListResponse.getResults().size() > 0) {
@@ -61,12 +67,19 @@ public class ArticleListFragment extends Fragment implements FragmentViewPresent
         }
 
     }
-
+    /**
+     * An interface method implementation
+     * @param error A reference of type {@link String}
+     */
     @Override
     public void displayError(String error) {
         Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * An interface method implementation
+     * @param result A reference of type {@link Result}
+     */
     @Override
     public void onItemClick(Result result) {
         Log.d(TAG, "onItemClick : " + result.getTitle());

@@ -6,6 +6,9 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * The type Media meta data.
+ */
 public class MediaMetaData implements Parcelable {
     @SerializedName("url")
     @Expose
@@ -20,6 +23,11 @@ public class MediaMetaData implements Parcelable {
     @Expose
     private int width;
 
+    /**
+     * Instantiates a new Media meta data.
+     *
+     * @param in the in
+     */
     protected MediaMetaData(Parcel in) {
         url = in.readString();
         format = in.readString();
@@ -40,6 +48,9 @@ public class MediaMetaData implements Parcelable {
         return 0;
     }
 
+    /**
+     * The constant CREATOR.
+     */
     public static final Creator<MediaMetaData> CREATOR = new Creator<MediaMetaData>() {
         @Override
         public MediaMetaData createFromParcel(Parcel in) {
@@ -52,34 +63,74 @@ public class MediaMetaData implements Parcelable {
         }
     };
 
+    /**
+     * Gets url.
+     *
+     * @return the url
+     */
     public String getUrl() {
         return url;
     }
 
+    /**
+     * Sets url.
+     *
+     * @param url the url
+     */
     public void setUrl(String url) {
         this.url = url;
     }
 
+    /**
+     * Gets format.
+     *
+     * @return the format
+     */
     public String getFormat() {
         return format;
     }
 
+    /**
+     * Sets format.
+     *
+     * @param format the format
+     */
     public void setFormat(String format) {
         this.format = format;
     }
 
+    /**
+     * Gets height.
+     *
+     * @return the height
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * Sets height.
+     *
+     * @param height the height
+     */
     public void setHeight(int height) {
         this.height = height;
     }
 
+    /**
+     * Gets width.
+     *
+     * @return the width
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * Sets width.
+     *
+     * @param width the width
+     */
     public void setWidth(int width) {
         this.width = width;
     }

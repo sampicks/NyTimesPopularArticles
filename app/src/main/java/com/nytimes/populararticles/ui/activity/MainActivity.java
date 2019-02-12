@@ -14,6 +14,9 @@ import com.nytimes.populararticles.R;
 import com.nytimes.populararticles.ui.fragments.views.ArticleDetailFragment;
 import com.nytimes.populararticles.ui.fragments.views.ArticleListFragment;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
 
 
@@ -43,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
         addFragment(mArticleListFragment, ArticleListFragment.TAG, true);
     }
 
+    /**
+     * Sets title bar.
+     *
+     * @param title the title
+     */
     public void setTitleBar(String title) {
         if (TextUtils.isEmpty(title)) return;
         getSupportActionBar().setTitle(title);
@@ -51,8 +59,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * method to add/replace fragment
      *
-     * @param fragment
-     * @param tag
+     * @param fragment               the fragment
+     * @param tag                    the tag
+     * @param isFirstFragmentInStack the is first fragment in stack
      */
     public void addFragment(@NonNull Fragment fragment, String tag, boolean isFirstFragmentInStack) {
         try {

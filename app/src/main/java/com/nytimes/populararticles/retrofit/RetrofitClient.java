@@ -8,15 +8,29 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * The type Retrofit client.
+ */
 public class RetrofitClient {
 
     private final static String BASE_URL = "http://api.nytimes.com/";
+    /**
+     * The constant retrofit.
+     */
     public static Retrofit retrofit;
 
+    /**
+     * Retrofit client.
+     */
     public void RetrofitClient() {
 
     }
 
+    /**
+     * Gets retrofit.
+     *
+     * @return the retrofit
+     */
     public static Retrofit getRetrofit() {
 
         if (retrofit == null) {

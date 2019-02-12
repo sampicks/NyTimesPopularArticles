@@ -16,6 +16,11 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * @author peeyooshkhare
+ * A simple implementation class of {@link FragmentViewPresenter.Presenter} for {@link ArticleListResponse}
+ * @version 1.0
+ */
 public class ArticleListPresenterImpl implements FragmentViewPresenter.Presenter {
     private static final String TAG = "ArticleListPresenterImp";
 
@@ -38,6 +43,9 @@ public class ArticleListPresenterImpl implements FragmentViewPresenter.Presenter
         mProgressDialog.setCanceledOnTouchOutside(false);
     }
 
+    /**
+     * An interface method implementation
+     */
     @Override
     public void fetchData() {
         getObservable().subscribeWith(getObserver());
@@ -46,8 +54,8 @@ public class ArticleListPresenterImpl implements FragmentViewPresenter.Presenter
     public Observable<ArticleListResponse> getObservable() {
         return RetrofitClient.getRetrofit().create(NYTimesApiService.class)
                 .getArticles(context.getString(R.string.api_key))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .subscribeOn(Schedulers.io())// perform network operation on seperate thread
+                .observeOn(AndroidSchedulers.mainThread());// perform ui operation on main thread
     }
 
     public DisposableObserver<ArticleListResponse> getObserver() {

@@ -14,7 +14,10 @@ import com.nytimes.populararticles.R;
 import com.nytimes.populararticles.retrofit.responseModel.Result;
 
 /**
+ * Simple View fragment, not following mvp pattern here.
+ * @author peeyooshkhare
  * A simple {@link Fragment} subclass.
+ * @version 1.0
  */
 public class ArticleDetailFragment extends Fragment {
 
@@ -24,6 +27,11 @@ public class ArticleDetailFragment extends Fragment {
 
     private Result result = null;
 
+    /**
+     * A static method to instantiate a fragment
+     * @param bundle
+     * @return a fragment
+     */
     public static ArticleDetailFragment getInsance(Bundle bundle) {
         ArticleDetailFragment articleDetailFragment = new ArticleDetailFragment();
         articleDetailFragment.setArguments(bundle);
