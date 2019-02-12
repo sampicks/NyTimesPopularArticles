@@ -6,9 +6,9 @@ import android.util.Log;
 
 import com.nytimes.populararticles.R;
 import com.nytimes.populararticles.ui.fragments.mvp.FragmentViewPresenter;
-import com.nytimes.populararticles.ui.retrofit.NYTimesApiService;
-import com.nytimes.populararticles.ui.retrofit.RetrofitClient;
-import com.nytimes.populararticles.ui.retrofit.responseModel.ArticleListResponse;
+import com.nytimes.populararticles.retrofit.NYTimesApiService;
+import com.nytimes.populararticles.retrofit.RetrofitClient;
+import com.nytimes.populararticles.retrofit.responseModel.ArticleListResponse;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;

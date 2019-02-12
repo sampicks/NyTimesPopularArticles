@@ -1,4 +1,4 @@
-package com.nytimes.populararticles.ui.retrofit;
+package com.nytimes.populararticles.retrofit;
 
 import android.content.Context;
 

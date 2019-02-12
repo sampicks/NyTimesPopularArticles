@@ -12,15 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.nytimes.populararticles.R;
+import com.nytimes.populararticles.retrofit.responseModel.ArticleListResponse;
+import com.nytimes.populararticles.retrofit.responseModel.Result;
 import com.nytimes.populararticles.ui.activity.MainActivity;
 import com.nytimes.populararticles.ui.fragments.adapter.ArticleListAdapter;
 import com.nytimes.populararticles.ui.fragments.mvp.FragmentViewPresenter;
 import com.nytimes.populararticles.ui.fragments.presenter.ArticleListPresenterImpl;
-import com.nytimes.populararticles.ui.retrofit.responseModel.ArticleListResponse;
-import com.nytimes.populararticles.ui.retrofit.responseModel.Result;
 
 /**
  * A simple {@link Fragment} subclass.

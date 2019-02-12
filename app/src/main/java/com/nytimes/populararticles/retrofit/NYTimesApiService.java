@@ -1,6 +1,6 @@
-package com.nytimes.populararticles.ui.retrofit;
+package com.nytimes.populararticles.retrofit;
 
-import com.nytimes.populararticles.ui.retrofit.responseModel.ArticleListResponse;
+import com.nytimes.populararticles.retrofit.responseModel.ArticleListResponse;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
