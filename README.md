@@ -73,5 +73,37 @@ under androidTest
         assertEquals(InstrumentationRegistry.getTargetContext().getString(R.string.popular_articles), toolbarView.getTitle());
     }
 ```
+
+### Code Quality Check
+SonarQube is used to check code quality. Here are implementation steps.
+Add following in project level Build.gradle
+```sh
+ classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.1"
+```
+Add following in app level Build.gradle file
+```sh
+apply plugin: "org.sonarqube"
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "NYTimesPopularArticles"
+        property "sonar.projectKey", "com.nytimes.populararticles"
+        property "sonar.host.url", "http://192.114.1.1:9000"
+        property "sonar.language", "java"
+        property "sonar.sources", "src/main/"
+        property "sonar.login", "<username>"
+        property "sonar.password", "<password>"
+    }
+}
+```
+Now move to gradle.properties
+```sh
+ systemProp.sonar.host.url=http://localhost:9000
+ 
+ systemProp.sonar.login=<username>
+systemProp.sonar.password=<password>
+```
+Test result file is located under project with name "SonarQube_TestResult_Screen.png"
+
 ### Development
 Want to contribute? Most Welcome!
