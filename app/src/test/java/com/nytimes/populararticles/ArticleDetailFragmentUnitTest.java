@@ -19,7 +19,7 @@ public class ArticleDetailFragmentUnitTest {
     @Test
     public void testExistenceOfFragment() {
         Assert.assertNotNull(articleDetailFragment);
-        Assert.assertEquals(ArticleDetailFragment.class.getSimpleName(), ArticleDetailFragment.TAG);
+        Assert.assertEquals(ArticleDetailFragment.TAG, ArticleDetailFragment.class.getSimpleName());
     }
 
     @After

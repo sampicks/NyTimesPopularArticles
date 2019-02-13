@@ -20,7 +20,7 @@ import com.nytimes.populararticles.ui.fragments.views.ArticleListFragment;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
-    public ArticleListFragment mArticleListFragment;
+    private ArticleListFragment mArticleListFragment;
     private FragmentManager fragmentManager;
 
     @Override
@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
         mArticleListFragment = new ArticleListFragment();
         addFragment(mArticleListFragment, ArticleListFragment.TAG, true);
+    }
+
+    public ArticleListFragment getArticleListFragment() {
+        return mArticleListFragment;
     }
 
     /**

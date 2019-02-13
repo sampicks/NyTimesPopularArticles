@@ -11,6 +11,6 @@ public class ArticleListFragmentUnitTest {
     public void testExistenceOfView() {
         ArticleListFragment fragment = new ArticleListFragment();
         Assert.assertNotNull(fragment);
-        Assert.assertEquals(ArticleListFragment.class.getSimpleName(), ArticleListFragment.TAG);
+        Assert.assertEquals(ArticleListFragment.TAG, ArticleListFragment.class.getSimpleName());
     }
 }
