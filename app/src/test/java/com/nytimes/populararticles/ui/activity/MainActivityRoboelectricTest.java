@@ -28,8 +28,7 @@ public class MainActivityRoboelectricTest {
     }
 
     @Test
-    @Ignore
-    public void clickButton() {
+    public void testToolbarAndFrameLayout() {
         Toolbar toolbar = activity.findViewById(R.id.toolbar);
         assertNotNull("Toolbar could not be found", toolbar);
         assertNotNull("content framelayout not found", activity.findViewById(R.id.container));

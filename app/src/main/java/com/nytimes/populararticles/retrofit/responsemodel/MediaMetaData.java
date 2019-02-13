@@ -1,4 +1,4 @@
-package com.nytimes.populararticles.retrofit.responseModel;
+package com.nytimes.populararticles.retrofit.responsemodel;
 
 import android.os.Parcel;
 import android.os.Parcelable;

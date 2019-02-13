@@ -1,28 +1,26 @@
 package com.nytimes.populararticles.ui.activity;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.nytimes.populararticles.R;
-import com.nytimes.populararticles.ui.fragments.views.ArticleDetailFragment;
 import com.nytimes.populararticles.ui.fragments.views.ArticleListFragment;
 
 /**
  * The type Main activity.
  */
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
-
-    private FragmentTransaction fragmentTransaction;
     private FragmentManager fragmentManager;
-    private ArticleListFragment mArticleListFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setTitleBar(getString(R.string.popular_articles));
 
         fragmentManager = getSupportFragmentManager();
-        mArticleListFragment = new ArticleListFragment();
+        ArticleListFragment mArticleListFragment = new ArticleListFragment();
         addFragment(mArticleListFragment, ArticleListFragment.TAG, true);
     }
 
@@ -65,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addFragment(@NonNull Fragment fragment, String tag, boolean isFirstFragmentInStack) {
         try {
-            fragmentTransaction = fragmentManager.beginTransaction();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             if (!isFirstFragmentInStack) {
                 fragmentTransaction.add(R.id.container, fragment, tag);
                 fragmentTransaction.addToBackStack(tag);
@@ -76,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.commitAllowingStateLoss();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage());
         }
     }
 

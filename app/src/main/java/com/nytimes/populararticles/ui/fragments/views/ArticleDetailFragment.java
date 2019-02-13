@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.nytimes.populararticles.R;
-import com.nytimes.populararticles.retrofit.responseModel.Result;
+import com.nytimes.populararticles.retrofit.responsemodel.Result;
 
 /**
  * Simple View fragment, not following mvp pattern here.

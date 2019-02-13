@@ -8,7 +8,7 @@ import com.nytimes.populararticles.R;
 import com.nytimes.populararticles.ui.fragments.mvp.FragmentViewPresenter;
 import com.nytimes.populararticles.retrofit.NYTimesApiService;
 import com.nytimes.populararticles.retrofit.RetrofitClient;
-import com.nytimes.populararticles.retrofit.responseModel.ArticleListResponse;
+import com.nytimes.populararticles.retrofit.responsemodel.ArticleListResponse;
 import com.nytimes.populararticles.utils.NetworkUtils;
 
 import io.reactivex.Observable;
@@ -56,7 +56,7 @@ public class ArticleListPresenterImpl implements FragmentViewPresenter.Presenter
     }
 
     public Observable<ArticleListResponse> getObservable() {
-        return RetrofitClient.getRetrofit().create(NYTimesApiService.class)
+        return RetrofitClient.getRetrofitClient().create(NYTimesApiService.class)
                 .getArticles(context.getString(R.string.api_key))
                 .subscribeOn(Schedulers.io())// perform network operation on seperate thread
                 .observeOn(AndroidSchedulers.mainThread());// perform ui operation on main thread
@@ -76,8 +76,7 @@ public class ArticleListPresenterImpl implements FragmentViewPresenter.Presenter
             @Override
             public void onError(@NonNull Throwable e) {
                 mProgressDialog.dismiss();
-                Log.d(TAG, "Error" + e);
-                e.printStackTrace();
+                Log.e(TAG, e.getMessage());
                 mView.displayError(context.getString(R.string.error_fetch_articles));
             }
 

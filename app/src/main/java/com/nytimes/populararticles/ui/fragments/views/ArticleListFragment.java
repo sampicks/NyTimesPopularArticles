@@ -14,8 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.nytimes.populararticles.R;
-import com.nytimes.populararticles.retrofit.responseModel.ArticleListResponse;
-import com.nytimes.populararticles.retrofit.responseModel.Result;
+import com.nytimes.populararticles.retrofit.responsemodel.ArticleListResponse;
+import com.nytimes.populararticles.retrofit.responsemodel.Result;
 import com.nytimes.populararticles.ui.activity.MainActivity;
 import com.nytimes.populararticles.ui.fragments.adapter.ArticleListAdapter;
 import com.nytimes.populararticles.ui.fragments.mvp.FragmentViewPresenter;
@@ -30,7 +30,6 @@ public class ArticleListFragment extends Fragment implements FragmentViewPresent
     public static final String TAG = "ArticleListFragment";
 
     private RecyclerView mRecyclerView;
-    private ArticleListAdapter adapter;
 
     public ArticleListFragment() {
         // Required empty public constructor
@@ -48,7 +47,7 @@ public class ArticleListFragment extends Fragment implements FragmentViewPresent
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.rvArticles);
+        mRecyclerView = view.findViewById(R.id.rvArticles);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         FragmentViewPresenter.Presenter presenter = new ArticleListPresenterImpl(getActivity(), this);
@@ -61,8 +60,8 @@ public class ArticleListFragment extends Fragment implements FragmentViewPresent
      */
     @Override
     public void setData(ArticleListResponse articleListResponse) {
-        if (articleListResponse != null && articleListResponse.getResults() != null && articleListResponse.getResults().size() > 0) {
-            adapter = new ArticleListAdapter(this, articleListResponse.getResults());
+        if (articleListResponse != null && articleListResponse.getResults() != null && articleListResponse.getResults().isEmpty()) {
+            ArticleListAdapter adapter = new ArticleListAdapter(this, articleListResponse.getResults());
             mRecyclerView.setAdapter(adapter);
         }
 

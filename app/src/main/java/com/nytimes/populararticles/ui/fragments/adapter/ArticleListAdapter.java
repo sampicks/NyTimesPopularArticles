@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.nytimes.populararticles.R;
-import com.nytimes.populararticles.retrofit.responseModel.Result;
+import com.nytimes.populararticles.retrofit.responsemodel.Result;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
  * @author peeyooshkhare A simple implementation class of {@link RecyclerView.Adapter}
  * @version 1.0
  */
-public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.ViewHolder> {
+public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.ArticleViewHolder> {
 
     private RecyclerViewItemClickListener recyclerViewItemClickListener;
     private final List<Result> resultList;
@@ -36,14 +36,14 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
     }
 
     @Override
-    public ArticleListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ArticleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.articledetails_list_content, parent, false);
-        return new ArticleListAdapter.ViewHolder(view);
+        return new ArticleViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ArticleListAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final ArticleViewHolder holder, int position) {
         holder.tvTitle.setText(resultList.get(position).getTitle());
         holder.tvPublishDate.setText(resultList.get(position).getPublishedDate());
         holder.tvBylines.setText(resultList.get(position).getByline());
@@ -60,7 +60,7 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
     /**
      * The type View holder.
      */
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ArticleViewHolder extends RecyclerView.ViewHolder {
         /**
          * The Tv title.
          */
@@ -79,11 +79,11 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
          *
          * @param view the view
          */
-        ViewHolder(View view) {
+        ArticleViewHolder(View view) {
             super(view);
-            tvTitle = (TextView) view.findViewById(R.id.tvTitle);
-            tvPublishDate = (TextView) view.findViewById(R.id.tvPublishDate);
-            tvBylines = (TextView) view.findViewById(R.id.tvBylines);
+            tvTitle = view.findViewById(R.id.tvTitle);
+            tvPublishDate = view.findViewById(R.id.tvPublishDate);
+            tvBylines = view.findViewById(R.id.tvBylines);
         }
     }
 

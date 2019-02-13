@@ -1,4 +1,4 @@
-package com.nytimes.populararticles.retrofit.responseModel;
+package com.nytimes.populararticles.retrofit.responsemodel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
