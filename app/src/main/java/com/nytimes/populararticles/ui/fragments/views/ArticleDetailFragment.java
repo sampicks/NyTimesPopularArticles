@@ -15,6 +15,7 @@ import com.nytimes.populararticles.retrofit.responseModel.Result;
 
 /**
  * Simple View fragment, not following mvp pattern here.
+ *
  * @author peeyooshkhare
  * A simple {@link Fragment} subclass.
  * @version 1.0
@@ -29,7 +30,8 @@ public class ArticleDetailFragment extends Fragment {
 
     /**
      * A static method to instantiate a fragment
-     * @param bundle
+     *
+     * @param bundle used to get parcelable data from caller
      * @return a fragment
      */
     public static ArticleDetailFragment getInsance(Bundle bundle) {
@@ -45,8 +47,14 @@ public class ArticleDetailFragment extends Fragment {
             result = getArguments().getParcelable(KEY_RESULT);
     }
 
+    /**
+     * A static method to instantiate a fragment
+     *
+     * @param inflater used to inflate view
+     * @return a fragment
+     */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_article_detail, container, false);
@@ -65,7 +73,7 @@ public class ArticleDetailFragment extends Fragment {
 
         tvTitleDetails.setText(result.getTitle());
         tvAbstractDetails.setText(result.getAbstract());
-        tvSourceDetails.setText(getString(R.string.source) + result.getSource());
+        tvSourceDetails.setText(String.format("%1s%2s", getString(R.string.source), result.getSource()));
         tvPublishDateDetails.setText(result.getPublishedDate());
     }
 
