@@ -46,12 +46,18 @@ public class MainActivityTest {
     }
 
     @Test
+    public void testFragmentExistence() {
+        Activity activity = activityTestRule.getActivity();
+        ArticleListFragment articleListFragment = ((MainActivity) activity).mArticleListFragment;
+        assertNotNull(activity);
+        assertNotNull(articleListFragment);
+    }
+
+    @Test
     public void testToolbar() {
         Activity activity = activityTestRule.getActivity();
         Toolbar toolbarView = activity.findViewById(R.id.toolbar);
         assertTrue(toolbarView.isShown());
         assertEquals(InstrumentationRegistry.getTargetContext().getString(R.string.popular_articles), toolbarView.getTitle());
     }
-
-
 }
