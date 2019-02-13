@@ -11,7 +11,7 @@ NYTimesPopularArticles is an android application that provides most popular arti
   - Keep updates to user through latest news.
 
 
-Java programming language is used to develop this application, Java can be downloaded from [https://www.java.com/en/download/][df1]
+Java programming language is used to develop this application, Java can be downloaded from [https://www.java.com/en/download/]
 
 > The idea is that news should be
 > publishable as-is, as plain text, without
@@ -47,7 +47,31 @@ implementation 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
 implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 ```
-
+#### Project level Build.gradle
+```sh
+classpath 'com.android.tools.build:gradle:3.2.1'
+```
+#### Unit Test
+under test
+```sh
+  @Test
+    @Ignore
+    public void clickButton() {
+        Toolbar toolbar = activity.findViewById(R.id.toolbar);
+        assertNotNull("Toolbar could not be found", toolbar);
+        assertNotNull("content framelayout not found", activity.findViewById(R.id.container));
+    }
+```
+#### Unit Test (Android)
+under androidTest
+```sh
+ @Test
+    public void testToolbar() {
+        Activity activity = activityTestRule.getActivity();
+        Toolbar toolbarView = activity.findViewById(R.id.toolbar);
+        assertTrue(toolbarView.isShown());
+        assertEquals(InstrumentationRegistry.getTargetContext().getString(R.string.popular_articles), toolbarView.getTitle());
+    }
+```
 ### Development
 Want to contribute? Most Welcome!
-
