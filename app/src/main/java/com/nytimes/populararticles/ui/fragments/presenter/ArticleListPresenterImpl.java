@@ -9,6 +9,7 @@ import com.nytimes.populararticles.ui.fragments.mvp.FragmentViewPresenter;
 import com.nytimes.populararticles.retrofit.NYTimesApiService;
 import com.nytimes.populararticles.retrofit.RetrofitClient;
 import com.nytimes.populararticles.retrofit.responseModel.ArticleListResponse;
+import com.nytimes.populararticles.utils.NetworkUtils;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -48,7 +49,10 @@ public class ArticleListPresenterImpl implements FragmentViewPresenter.Presenter
      */
     @Override
     public void fetchData() {
-        getObservable().subscribeWith(getObserver());
+
+        if (NetworkUtils.isInternetAvailable(context))
+            getObservable().subscribeWith(getObserver());
+        else mView.displayError(context.getString(R.string.internet_not_available));
     }
 
     public Observable<ArticleListResponse> getObservable() {
@@ -74,7 +78,7 @@ public class ArticleListPresenterImpl implements FragmentViewPresenter.Presenter
                 mProgressDialog.dismiss();
                 Log.d(TAG, "Error" + e);
                 e.printStackTrace();
-                mView.displayError("Error fetching Movie Data");
+                mView.displayError(context.getString(R.string.error_fetch_articles));
             }
 
             @Override
