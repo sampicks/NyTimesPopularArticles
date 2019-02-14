@@ -60,7 +60,7 @@ public class ArticleListFragment extends Fragment implements FragmentViewPresent
      */
     @Override
     public void setData(ArticleListResponse articleListResponse) {
-        if (articleListResponse != null && articleListResponse.getResults() != null && articleListResponse.getResults().isEmpty()) {
+        if (articleListResponse != null && articleListResponse.getResults() != null && !articleListResponse.getResults().isEmpty()) {
             ArticleListAdapter adapter = new ArticleListAdapter(this, articleListResponse.getResults());
             mRecyclerView.setAdapter(adapter);
         }
