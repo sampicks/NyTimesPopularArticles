@@ -28,6 +28,7 @@ public class ArticleListPresenterImpl implements FragmentViewPresenter.Presenter
     private FragmentViewPresenter.View<ArticleListResponse> mView;
     private Context context;
     private ProgressDialog mProgressDialog;
+    private DisposableObserver<ArticleListResponse> mResponseDisposableObserver;
 
     /**
      * constructor of the class
@@ -35,7 +36,7 @@ public class ArticleListPresenterImpl implements FragmentViewPresenter.Presenter
      * @param ctx  a reference of type {@link Context}
      * @param view a reference of type {@link FragmentViewPresenter.View}
      */
-    public ArticleListPresenterImpl(Context ctx, FragmentViewPresenter.View<ArticleListResponse> view) {
+    public ArticleListPresenterImpl(@NonNull Context ctx, FragmentViewPresenter.View<ArticleListResponse> view) {
         this.mView = view;
         this.context = ctx;
         mProgressDialog = new ProgressDialog(context);
@@ -51,18 +52,18 @@ public class ArticleListPresenterImpl implements FragmentViewPresenter.Presenter
     public void fetchData() {
 
         if (NetworkUtils.isInternetAvailable(context))
-            getObservable().subscribeWith(getObserver());
+            mResponseDisposableObserver = getObservable().subscribeWith(getObserver());
         else mView.displayError(context.getString(R.string.internet_not_available));
     }
 
-    public Observable<ArticleListResponse> getObservable() {
+    private Observable<ArticleListResponse> getObservable() {
         return RetrofitClient.getRetrofitClient().create(NYTimesApiService.class)
                 .getArticles(context.getString(R.string.api_key))
-                .subscribeOn(Schedulers.io())// perform network operation on seperate thread
+                .subscribeOn(Schedulers.io())// perform network operation on separate thread
                 .observeOn(AndroidSchedulers.mainThread());// perform ui operation on main thread
     }
 
-    public DisposableObserver<ArticleListResponse> getObserver() {
+    private DisposableObserver<ArticleListResponse> getObserver() {
         mProgressDialog.show();
         return new DisposableObserver<ArticleListResponse>() {
 
@@ -83,7 +84,17 @@ public class ArticleListPresenterImpl implements FragmentViewPresenter.Presenter
             @Override
             public void onComplete() {
                 Log.d(TAG, "Completed");
+
             }
         };
+    }
+
+    /**
+     * method to dispose observer
+     */
+    public void disposeReferences() {
+        if(mResponseDisposableObserver!=null && !mResponseDisposableObserver.isDisposed())
+        mResponseDisposableObserver.dispose();
+        Log.d(TAG, "disposeReferences");
     }
 }

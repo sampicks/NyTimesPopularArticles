@@ -30,6 +30,7 @@ public class ArticleListFragment extends Fragment implements FragmentViewPresent
     public static final String TAG = "ArticleListFragment";
 
     private RecyclerView mRecyclerView;
+    private FragmentViewPresenter.Presenter presenter;
 
     public ArticleListFragment() {
         // Required empty public constructor
@@ -50,12 +51,14 @@ public class ArticleListFragment extends Fragment implements FragmentViewPresent
         mRecyclerView = view.findViewById(R.id.rvArticles);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        FragmentViewPresenter.Presenter presenter = new ArticleListPresenterImpl(getActivity(), this);
+
+        presenter = new ArticleListPresenterImpl(getActivity(), this);
         presenter.fetchData();
     }
 
     /**
      * An interface method implementation
+     *
      * @param articleListResponse A reference of type {@link ArticleListResponse}
      */
     @Override
@@ -66,8 +69,10 @@ public class ArticleListFragment extends Fragment implements FragmentViewPresent
         }
 
     }
+
     /**
      * An interface method implementation
+     *
      * @param error A reference of type {@link String}
      */
     @Override
@@ -77,6 +82,7 @@ public class ArticleListFragment extends Fragment implements FragmentViewPresent
 
     /**
      * An interface method implementation
+     *
      * @param result A reference of type {@link Result}
      */
     @Override
@@ -86,5 +92,11 @@ public class ArticleListFragment extends Fragment implements FragmentViewPresent
         bundle.putParcelable(ArticleDetailFragment.KEY_RESULT, result);
         ArticleDetailFragment articleDetailFragment = ArticleDetailFragment.getInsance(bundle);
         ((MainActivity) getActivity()).addFragment(articleDetailFragment, ArticleDetailFragment.TAG, false);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ((ArticleListPresenterImpl) presenter).disposeReferences();
     }
 }
